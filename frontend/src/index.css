@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap');
+
+.font-serif {
+  font-family: 'DM Serif Display', serif;
+}
+
+.font-sans {
+  font-family: 'Inter', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-body {
+  font-family: 'Libre Baskerville', serif;
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+

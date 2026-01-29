@@ -104,5 +104,5 @@ psycopg2-binary
 django-cors-headers
 dj-database-url==3.1.0
 djangorestframework==3.15.2
-corsheaders==3.14.0
+
 

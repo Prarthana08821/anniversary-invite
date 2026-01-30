@@ -24,12 +24,11 @@ export default function IntroScreen({ onOpen, onEnter }: IntroScreenProps) {
         style={{ backgroundImage: "url('/images/intro-bg.jpg')" }}
       />
 
-      {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-4">
 
         {/* ENVELOPE */}
         <motion.div
-          animate={{ y: opened ? 0 : [0, -18, 0] }}
+          animate={{ y: opened ? 0 : [0, -14, 0] }}
           transition={{
             duration: opened ? 0.6 : 6,
             repeat: opened ? 0 : Infinity,
@@ -37,16 +36,22 @@ export default function IntroScreen({ onOpen, onEnter }: IntroScreenProps) {
           }}
           className="
             relative
-            w-[360px] h-[260px]
-            sm:w-[460px] sm:h-[320px]
-            md:w-[560px] md:h-[360px]
+            w-[380px] h-[280px]
+            sm:w-[500px] sm:h-[340px]
+            md:w-[620px] md:h-[390px]
           "
         >
+          {/* Outer glow */}
+          <div className="absolute -inset-1 rounded-[3rem] bg-gradient-to-br from-[#D4AF5A]/20 to-transparent blur-xl" />
+
           {/* Shadow */}
-          <div className="absolute inset-0 rounded-[2.75rem] shadow-[0_60px_140px_rgba(0,0,0,0.75)]" />
+          <div className="absolute inset-0 rounded-[3rem] shadow-[0_70px_160px_rgba(0,0,0,0.8)]" />
 
           {/* Envelope base */}
-          <div className="absolute inset-0 rounded-[2.75rem] bg-gradient-to-b from-[#3A332E] to-[#2A2420] border border-[#C9A24D]/25" />
+          <div className="absolute inset-0 rounded-[3rem] bg-gradient-to-b from-[#3E3732] to-[#26211E] border border-[#C9A24D]/30" />
+
+          {/* Inner lining */}
+          <div className="absolute inset-3 rounded-[2.5rem] border border-[#C9A24D]/25" />
 
           {/* Flap */}
           <motion.div
@@ -54,41 +59,81 @@ export default function IntroScreen({ onOpen, onEnter }: IntroScreenProps) {
             animate={{ rotateX: opened ? -180 : 0 }}
             transition={{ duration: 1.4, ease: "easeInOut" }}
             style={{ transformOrigin: "top center" }}
-            className="absolute top-0 left-0 right-0 h-1/2 rounded-t-[2.75rem] bg-gradient-to-b from-[#4A423C] to-[#332C27] z-20"
+            className="absolute top-0 left-0 right-0 h-1/2 rounded-t-[3rem] bg-gradient-to-b from-[#4E463F] to-[#322C27] z-20"
           />
+
+          {/* INNER GLOW */}
+          <div className="
+            absolute inset-8
+            rounded-2xl
+            bg-[radial-gradient(circle_at_center,rgba(212,175,90,0.18),transparent_70%)]
+            pointer-events-none
+            z-5
+          " />
 
           {/* CARD */}
           <motion.div
-            initial={{ y: 40, opacity: 0 }}
+            initial={{ y: 36, opacity: 0 }}
             animate={{
-              y: opened ? -30 : 40,
+              y: opened ? -26 : 36,
               opacity: opened ? 1 : 0,
             }}
             transition={{ delay: 0.7, duration: 1, ease: "easeOut" }}
             className="
               absolute inset-6
               bg-[#FAF7F2]
+              bg-[linear-gradient(transparent,rgba(0,0,0,0.015))]
               rounded-2xl
               flex flex-col items-center justify-center
               text-center
-              px-10
+              px-10 py-9
               z-10
               border border-[#C9A24D]/45
-              shadow-[0_35px_90px_rgba(0,0,0,0.35)]
+              shadow-[0_30px_80px_rgba(0,0,0,0.35)]
+              overflow-hidden
             "
           >
-            <div className="w-16 h-px bg-[#C9A24D]/80 mb-6" />
+            {/* Monogram watermark */}
+            <div className="
+              absolute inset-0
+              flex items-center justify-center
+              text-[120px] md:text-[160px]
+              font-serif
+              text-[#C9A24D]/10
+              tracking-widest
+              select-none
+              pointer-events-none
+            ">
+              J&nbsp;&amp;&nbsp;M
+            </div>
 
-            {/* TITLE */}
-            <h1 className="font-serif text-3xl md:text-4xl text-[#C9A24D] mb-4 tracking-wide">
+            {/* Top divider */}
+            <div className="w-14 h-px bg-[#C9A24D]/80 mb-4 relative z-10" />
+
+            {/* Title */}
+            <h1 className="font-serif text-3xl md:text-4xl text-[#C9A24D] mb-4 tracking-wide relative z-10">
               Silver Jubilee
             </h1>
 
-            {/* NEW LINE */}
-            <p className="font-serif text-base md:text-lg text-gray-600 leading-relaxed">
-              Still choosing each other.
+            {/* Pickup line */}
+            <p className="font-serif text-[15px] md:text-[16px] text-gray-600 leading-relaxed max-w-sm relative z-10">
+              Years have passed, seasons have changed,<br />
+              yet the promise remains—<br />
+              to walk side by side,<br />
+              finding home in the same place every day.
             </p>
+
+            {/* Bottom divider */}
+            <div className="w-6 h-px bg-[#C9A24D]/60 mt-5 relative z-10" />
           </motion.div>
+
+          {/* Corner highlights */}
+          <div className="absolute inset-6 rounded-2xl pointer-events-none z-20">
+            <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-[#C9A24D]/30 rounded-tl-xl" />
+            <div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-[#C9A24D]/30 rounded-tr-xl" />
+            <div className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-[#C9A24D]/30 rounded-bl-xl" />
+            <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-[#C9A24D]/30 rounded-br-xl" />
+          </div>
 
           {/* GOLD DUST */}
           <AnimatePresence>
@@ -99,20 +144,20 @@ export default function IntroScreen({ onOpen, onEnter }: IntroScreenProps) {
                 exit={{ opacity: 0 }}
                 className="absolute inset-0 pointer-events-none z-30"
               >
-                {[...Array(18)].map((_, i) => (
+                {[...Array(22)].map((_, i) => (
                   <motion.span
                     key={i}
                     initial={{
                       opacity: 0,
                       y: 20,
-                      x: Math.random() * 300 - 150,
+                      x: Math.random() * 360 - 180,
                     }}
                     animate={{
                       opacity: [0, 0.6, 0],
-                      y: -120,
+                      y: -140,
                     }}
                     transition={{
-                      duration: 2.8,
+                      duration: 3,
                       delay: Math.random() * 0.6,
                       ease: "easeOut",
                     }}
@@ -121,7 +166,7 @@ export default function IntroScreen({ onOpen, onEnter }: IntroScreenProps) {
                       w-1 h-1
                       rounded-full
                       bg-[#D4AF5A]
-                      shadow-[0_0_12px_rgba(212,175,90,0.8)]
+                      shadow-[0_0_14px_rgba(212,175,90,0.9)]
                     "
                   />
                 ))}
@@ -134,11 +179,10 @@ export default function IntroScreen({ onOpen, onEnter }: IntroScreenProps) {
         {!opened && (
           <motion.button
             onClick={handleOpen}
-            animate={{ scale: [1, 1.06, 1] }}
+            animate={{ scale: [1, 1.05, 1] }}
             transition={{ duration: 1.8, repeat: Infinity }}
             className="
-              font-sans
-              mt-12
+              mt-10
               px-14 py-4
               rounded-full
               bg-[#D4AF5A]
@@ -156,17 +200,18 @@ export default function IntroScreen({ onOpen, onEnter }: IntroScreenProps) {
         {opened && (
           <motion.button
             onClick={onEnter}
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             className="
-              font-sans
-              mt-10
+              mt-6
+              px-10 py-3
+              rounded-full
+              bg-[#D4AF5A]/90
+              text-black
               text-sm
               tracking-widest
               uppercase
-              text-[#D4AF5A]
-              border-b border-[#D4AF5A]
-              pb-1
+              shadow-[0_0_35px_rgba(212,175,90,0.5)]
             "
           >
             Enter Celebration

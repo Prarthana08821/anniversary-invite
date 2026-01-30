@@ -6,7 +6,7 @@ import SaveTheDate from "../components/SaveTheDate"
 import Hero from "../components/Hero"
 import EventDetails from "../components/EventDetails"
 import PhotoGallery from "../components/gallery/PhotoGallery"
-import GoldConfetti from "../components/GoldConfetti"
+import HeroSparkles from "../components/HeroSparkles"
 import MusicPlayer from "../components/MusicPlayer"
 import RsvpForm from "../components/RsvpForm"
 import WishesWall from "../components/WishesWall"
@@ -40,9 +40,10 @@ export default function Home() {
       {/* 🎉 MAIN INVITATION */}
       {stage === "main" && (
         <>
-          <GoldConfetti />
-
+          
+          <HeroSparkles />
           <Hero />
+
           <EventDetails />
           <PhotoGallery />
 
